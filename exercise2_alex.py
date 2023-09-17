@@ -1,7 +1,7 @@
 # Strategy pattern example for a payment system
 
-from abc import ABC
 from dataclasses import dataclass, field
+from typing import Protocol
 
 
 @dataclass
@@ -10,7 +10,8 @@ class Item:
     price: int
 
 
-class ShippingStrategy(ABC):
+# class ShippingStrategy(ABC):
+class ShippingStrategy(Protocol):
     def calculate_shipping_cost(self, items: list[Item]) -> int:
         ...
 
