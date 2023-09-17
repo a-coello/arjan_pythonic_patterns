@@ -16,7 +16,7 @@ class PercentageDiscount:
 class FixedDiscount:
     fixed: int
 
-    def compute(self, _: int) -> int:
+    def __call__(self, _: int) -> int:
         return self.fixed
 
 
@@ -32,7 +32,7 @@ class Order:
 
 
 def main() -> None:
-    order = Order(price=100_00, quantity=2, discount=FixedDiscount(20_00).compute)
+    order = Order(price=100_00, quantity=2, discount=FixedDiscount(20_00))
     print(order)
     print(f"Total: ${order.compute_total()/100:.2f}")
 
